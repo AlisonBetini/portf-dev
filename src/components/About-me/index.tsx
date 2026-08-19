@@ -35,7 +35,7 @@ export function AboutMe({ id }: AboutMeProps) {
               <MdOutlineKeyboardArrowLeft className="arrowLeft" size={32} />
               <MdKeyboardArrowRight className="arrowRight" size={32} />
             </div>
-            <strong>Frontend Engineer</strong>
+            <strong>Full Stack Engineer</strong>
           </div>
         </div>
         <div></div>
@@ -43,20 +43,31 @@ export function AboutMe({ id }: AboutMeProps) {
       <div className="about">
         <h1>Sobre mim</h1>
         <p>
-          Sou um Desenvolvedor Full Stack apaixonado por tecnologia e inovação,
-          com sólida experiência no Front-end moderno utilizando ReactJS,
-          Next.js, TypeScript, JavaScript e Vite. Tenho domínio de bibliotecas e
-          ferramentas como Shadcn/UI, Radix/UI, Recharts, Styled-Components,
-          TailwindCSS e CSS Modules, criando interfaces acessíveis, responsivas
-          e de alta performance. No Back-end, possuo experiência prática com
-          Node.js, Docker, Prisma ORM, Knex e PostgreSQL, desenvolvendo
-          aplicações escaláveis, seguras e performáticas. Trabalho com
-          autenticação JWT, manipulação de APIs RESTful, arquitetura limpa,
-          injeção de dependência, e boas práticas de versionamento com Git.
+          Desenvolvedor Full Stack especializado em ecossistema JavaScript e
+          TypeScript (React, Next.js, Node.js e NestJS), focado na criação de
+          aplicações web modernas, escaláveis e de alta performance. Tenho
+          experiência prática no desenvolvimento de produtos ponta a ponta:
+          desde a construção de interfaces responsivas e otimizadas para SEO
+          (com pontuação máxima em métricas de performance), até a estruturação
+          de APIs REST escaláveis, modelagem de bancos de dados relacionais e
+          uso de Docker.
+        </p>
+        <p>💻 Principais Tecnologias & Ferramentas</p>
+        <p>
+          Front-end: React.js, Next.js, TypeScript, JavaScript (ES6+), Tailwind
+          CSS, HTML5/CSS3.
+        </p>
+        <p>Back-end: Node.js, NestJS, Express, APIs RESTful, Prisma ORM</p>
+        <p>Banco de Dados & DevOps: PostgreSQL, Docker, Git/GitHub.</p>
+        <p>
+          Integrações com APIs (WhatsApp, serviços web) e automações. 🚀
+          Atualmente aprofundando estudos em arquitetura de software e
+          integrações com Inteligência Artificial para criação de soluções
+          inteligentes.
         </p>
         <div className="separator-card">
           <div className="card">
-            <strong>869</strong>
+            <strong>1041</strong>
             <span>Seguidores</span>
           </div>
           <div className="card">
@@ -64,7 +75,7 @@ export function AboutMe({ id }: AboutMeProps) {
             <span>Projetos</span>
           </div>
           <div className="card">
-            <strong>12</strong>
+            <strong>15</strong>
             <span>Certificados</span>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import rocketseat from "@/assets/rocketseat.jpeg"
-import uniFECAF from "@/assets/Logo UNIFECAF - fundo branco.png"
+import fmu from "@/assets/fmu.png"
 import { ContainerFooter, IconsAnimationsRocketseat, IconsAnimationsUniFECAF } from "./styles"
 
 export function Footer() {
@@ -14,10 +14,10 @@ export function Footer() {
           <span className="text-violet-400">Rocketseat</span>
         </IconsAnimationsRocketseat>
         <IconsAnimationsUniFECAF>
-          <a href="https://www.unifecaf.com.br/" target="_blank">
-            <img className="max-w-12 max-sm:w-10 rounded-xl cursor-pointer" src={uniFECAF} alt="uniFECAF" />
+          <a href="https://portal.fmu.br/" target="_blank">
+            <img className="max-w-12 max-sm:w-10 rounded-xl cursor-pointer" src={fmu} alt="uniFECAF" />
           </a>
-          <span className="text-blue-400">uniFECAF</span>
+          <span className="text-blue-400">FMU</span>
         </IconsAnimationsUniFECAF>
       </div>
     </ContainerFooter>

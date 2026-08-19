@@ -64,7 +64,7 @@ export function PieChartSkillsCss() {
                               y={viewBox.cy}
                               className="fill-muted text-[22px] font-bold"
                             >
-                              CSS3
+                              Next
                             </tspan>
                             <tspan
                               x={viewBox.cx}

@@ -64,7 +64,7 @@ export function PieChartSkillsJS() {
                               y={viewBox.cy}
                               className="fill-muted text-[22px] font-bold"
                             >
-                              JavaScript
+                              TypeScript
                             </tspan>
                             <tspan
                               x={viewBox.cx}

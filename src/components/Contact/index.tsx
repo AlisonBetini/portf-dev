@@ -56,7 +56,7 @@ export function Contact({id}:ContactProps) {
         <div className="card">
           <FaGithub className="git" size={26} />
           <span>GitHub</span>
-          <a href="https://github.com/AlisonMaciel" target="_blank">
+          <a href="https://github.com/AlisonBetini" target="_blank">
             <strong>
               <span>Acessar</span> <GoArrowUpRight />
             </strong>

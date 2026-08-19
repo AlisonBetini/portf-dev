@@ -7,7 +7,7 @@ import typeWeather from "../../assets/typeweather.png";
 import foodExplorer from "../../assets/foodExplorer.png";
 import vendaSeusProdutos from "../../assets/Venda seus produtos.png";
 import redesSociais from "../../assets/redesSociais.png";
-import rocketMovies from "../../assets/rocketMovies.png";
+import cbpa from "../../assets/cbpa.png";
 import ElectricBorder from "../ElectricBorder";
 
 interface ProjectsProps {
@@ -23,6 +23,33 @@ export function Projects({ id }: ProjectsProps) {
         <div className="borderTwo"></div>
       </div>
       <div className="project">
+        <ElectricBorder
+          color="#d270c5"
+          speed={1}
+          chaos={0.12}
+          style={{ borderRadius: 16 }}
+        >
+          <div className="card">
+            <img src={cbpa} alt="" />
+            <div>
+              <span>RocketMovies</span>
+              <div className="separator">
+                <a
+                  href="https://github.com/AlisonBetini/Canil-Terras-do-Bar-o"
+                  target="_blank"
+                >
+                  <FaGithub size={24} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/feed/update/urn:li:activity:7490005737885302784/"
+                  target="_blank"
+                >
+                  <FaLinkedin size={24} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </ElectricBorder>
         <ElectricBorder
           color="#b7d5d7"
           speed={1}
@@ -77,7 +104,7 @@ export function Projects({ id }: ProjectsProps) {
             </div>
           </div>
         </ElectricBorder>
-          <ElectricBorder
+        <ElectricBorder
           color="#8464dd"
           speed={1}
           chaos={0.12}
@@ -104,7 +131,7 @@ export function Projects({ id }: ProjectsProps) {
             </div>
           </div>
         </ElectricBorder>
-          <ElectricBorder
+        <ElectricBorder
           color="#eaaeae"
           speed={1}
           chaos={0.12}
@@ -123,33 +150,6 @@ export function Projects({ id }: ProjectsProps) {
                 </a>
                 <a
                   href="https://www.linkedin.com/feed/update/urn:li:activity:7355699914862960642/"
-                  target="_blank"
-                >
-                  <FaLinkedin size={24} />
-                </a>
-              </div>
-            </div>
-          </div>
-        </ElectricBorder>
-        <ElectricBorder
-          color="#d270c5"
-          speed={1}
-          chaos={0.12}
-          style={{ borderRadius: 16 }}
-        >
-          <div className="card">
-            <img src={rocketMovies} alt="" />
-            <div>
-              <span>RocketMovies</span>
-              <div className="separator">
-                <a
-                  href="https://github.com/AlisonMaciel/RocketMovies-React.js-Project"
-                  target="_blank"
-                >
-                  <FaGithub size={24} />
-                </a>
-                <a
-                  href="https://www.linkedin.com/feed/update/urn:li:activity:7348428913842307073/"
                   target="_blank"
                 >
                   <FaLinkedin size={24} />
