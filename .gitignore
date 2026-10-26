@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local design references (not used by the site)
+public/video/
+src/assets/image-future.jpg
