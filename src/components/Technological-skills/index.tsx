@@ -8,6 +8,7 @@ import { IconCloudDemo } from "../Icons-Cloud";
 
 import Alison from "@/assets/Gemini_Generated_Image_mlv81cmlv81cmlv8 (1).png"
 
+import { SectionTitle } from "../SectionTitle";
 import { TechnologicalSkillsContainer } from "./styles";
 
 interface TechnologicalSkillsProps {
@@ -17,11 +18,7 @@ interface TechnologicalSkillsProps {
 export function TechnologicalSkills({id}:TechnologicalSkillsProps) {
   return (
     <TechnologicalSkillsContainer id={id}>
-      <div className="skills">
-        <div className="borderOne"></div>
-        <h2>Minhas Skills</h2>
-        <div className="borderTwo"></div>
-      </div>
+      <SectionTitle index="03" kicker="Stack" title="Minhas Skills" />
       <div className="charts">
         <PieChartSkillsHtml />
         <PieChartSkillsCss />
@@ -31,7 +28,7 @@ export function TechnologicalSkills({id}:TechnologicalSkillsProps) {
         <PieChartSkillsNext />
       </div>
       <div className="flex justify-center items-center">
-        <div className="relative  md:w-[550px]">
+        <div className="cloud relative md:w-[550px]">
           <img className="w-full " src={Alison} alt="Pessoa segunrado algo com a mao" />
             <div className="absolute right-0 top-0 ">
               <IconCloudDemo />

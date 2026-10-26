@@ -10,7 +10,7 @@ import {
 } from "../../ui/chart";
 
 const chartData = [
-  { browser: "Next", visitors: 30, fill: "#000000" },
+  { browser: "Next", visitors: 30, fill: "#E1E1E6" },
   { browser: "NotCompleted", visitors: 50, fill: "transparent" },
 ];
 const chartConfig = {
@@ -19,7 +19,7 @@ const chartConfig = {
   },
   Next: {
     label: "Next",
-    color: "#000000",
+    color: "#E1E1E6",
   },
   NotCompleted: {
     label: "NotCompleted",
@@ -71,7 +71,7 @@ export function PieChartSkillsNext() {
                               y={(viewBox.cy || 0) + 24}
                               className="fill-muted-foreground"
                             >
-                              2 meses
+                              7 meses
                             </tspan>
                           </text>
                         );

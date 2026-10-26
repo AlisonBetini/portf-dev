@@ -26,7 +26,7 @@ export const NavLink = styled.nav`
     bottom: 0;
     width: 100%;
     height: 2px;
-    background: #61dafb;
+    background: ${props => props.theme['accent-glow']};
     transform: scale(0);
     transition: transform 0.3s;
   }

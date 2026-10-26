@@ -1,77 +1,75 @@
+import type { CSSProperties } from "react";
+import type { IconType } from "react-icons";
+
 import { SkilsContainer } from "./styles";
 
-import { FaHtml5 } from "react-icons/fa6";
-import { FaCss3Alt } from "react-icons/fa";
-import { IoLogoJavascript } from "react-icons/io";
-import { SiTypescript } from "react-icons/si";
-import { FaReact } from "react-icons/fa6";
-import { SiVite } from "react-icons/si";
-import { RiNextjsFill } from "react-icons/ri";
-import { IoMdGitBranch } from "react-icons/io";
-import { FaGithub } from "react-icons/fa6";
-import { FaFigma } from "react-icons/fa";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { SiStyledcomponents } from "react-icons/si";
-import { FaNode } from "react-icons/fa";
-import { SiVitest } from "react-icons/si";
+import { FaHtml5, FaReact, FaGithub } from "react-icons/fa6";
+import { FaCss3Alt, FaFigma, FaNode, FaDocker } from "react-icons/fa";
+import { IoLogoJavascript, IoMdGitBranch } from "react-icons/io";
+import { SiTypescript, SiVite, SiStyledcomponents, SiVitest, SiKnexdotjs, SiFastify, SiPrisma, SiNestjs } from "react-icons/si";
+import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { DiPostgresql } from "react-icons/di";
 import { TbSql } from "react-icons/tb";
-import { SiKnexdotjs } from "react-icons/si";
-import { SiFastify } from "react-icons/si";
-import { FaDocker } from "react-icons/fa";
-import { SiPrisma } from "react-icons/si";
+
+interface Tech {
+  name: string
+  icon: IconType
+  // Brand color, revealed on hover. Dark brands use white so they stay visible on the dark page.
+  color: string
+}
+
+const frontEnd: Tech[] = [
+  { name: "React", icon: FaReact, color: "#61DAFB" },
+  { name: "Next.js", icon: RiNextjsFill, color: "#FFFFFF" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "JavaScript", icon: IoLogoJavascript, color: "#F7DF1E" },
+  { name: "HTML5", icon: FaHtml5, color: "#E34F26" },
+  { name: "CSS3", icon: FaCss3Alt, color: "#1572B6" },
+  { name: "Tailwind", icon: RiTailwindCssFill, color: "#06B6D4" },
+  { name: "Styled", icon: SiStyledcomponents, color: "#DB7093" },
+  { name: "Vite", icon: SiVite, color: "#646CFF" },
+  { name: "Figma", icon: FaFigma, color: "#F24E1E" },
+]
+
+const backEnd: Tech[] = [
+  { name: "Node.js", icon: FaNode, color: "#339933" },
+  { name: "NestJS", icon: SiNestjs, color: "#E0234E" },
+  { name: "Fastify", icon: SiFastify, color: "#FFFFFF" },
+  { name: "PostgreSQL", icon: DiPostgresql, color: "#4169E1" },
+  { name: "SQL", icon: TbSql, color: "#4479A1" },
+  { name: "Prisma", icon: SiPrisma, color: "#FFFFFF" },
+  { name: "Knex", icon: SiKnexdotjs, color: "#E16426" },
+  { name: "Docker", icon: FaDocker, color: "#2496ED" },
+  { name: "Vitest", icon: SiVitest, color: "#6E9F18" },
+  { name: "Git", icon: IoMdGitBranch, color: "#F05032" },
+  { name: "GitHub", icon: FaGithub, color: "#FFFFFF" },
+]
+
+function Row({ items, reverse }: { items: Tech[]; reverse?: boolean }) {
+  // The list is rendered twice so the -50% loop is seamless.
+  return (
+    <div className={`row${reverse ? " reverse" : ""}`}>
+      <ul className="track">
+        {[...items, ...items].map(({ name, icon: Icon, color }, index) => (
+          <li
+            key={`${name}-${index}`}
+            style={{ "--brand": color } as CSSProperties}
+            aria-hidden={index >= items.length}
+          >
+            <Icon className="icon" />
+            <span>{name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 export function Skills() {
   return (
-    <SkilsContainer>
-      <div>
-        <div className="scroll-wrapper">
-          <div className="infinite">
-            <FaHtml5 className="html" />
-            <FaCss3Alt className="css" />
-            <IoLogoJavascript className="js" />
-            <FaNode className="node" />
-            <SiVitest className="vitest" />
-            <DiPostgresql className="postgres" />
-            <TbSql className="sql" />
-            <SiKnexdotjs className="knex" />
-            <SiFastify className="fastify" />
-            <FaDocker className="docker" />
-            <SiPrisma className="prisma" />
-            <SiTypescript className="ts" />
-            <FaReact className="react" />
-            <SiVite className="vite" />
-            <RiNextjsFill className="next" />
-            <IoMdGitBranch className="git" />
-            <FaGithub className="github" />
-            <FaFigma className="figma" />
-            <RiTailwindCssFill className="tailwind" />
-            <SiStyledcomponents className="styled" />
-          </div>
-          <div className="scroll">
-            <FaHtml5 className="html" />
-            <FaCss3Alt className="css" />
-            <IoLogoJavascript className="js" />
-            <FaNode className="node" />
-            <SiVitest className="vitest" />
-            <DiPostgresql className="postgres" />
-            <TbSql className="sql" />
-            <SiKnexdotjs className="knex" />
-            <SiFastify className="fastify" />
-            <FaDocker className="docker" />
-            <SiPrisma className="prisma" />
-            <SiTypescript className="ts" />
-            <FaReact className="react" />
-            <SiVite className="vite" />
-            <RiNextjsFill className="next" />
-            <IoMdGitBranch className="git" />
-            <FaGithub className="github" />
-            <FaFigma className="figma" />
-            <RiTailwindCssFill className="tailwind" />
-            <SiStyledcomponents className="styled" />
-          </div>
-        </div>
-      </div>
+    <SkilsContainer aria-label="Tecnologias">
+      <Row items={frontEnd} />
+      <Row items={backEnd} reverse />
     </SkilsContainer>
   );
 }

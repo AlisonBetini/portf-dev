@@ -35,7 +35,7 @@ export const GlobalStyle =  createGlobalStyle`
    width: 7px;
  }
  ::-webkit-scrollbar-thumb {
-   background-color: #61DAFB;
+   background-color: ${props => props.theme['accent']};
    border-radius: 8px;
  }
  ::-webkit-scrollbar-track {

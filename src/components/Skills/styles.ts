@@ -1,286 +1,91 @@
 import styled, { keyframes } from "styled-components";
 
-const infiniteScroll = keyframes`
-  to {
-    transform: translateX(-100%);
-  }
+const marquee = keyframes`
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 `
 
-export const SkilsContainer = styled.div`
+export const SkilsContainer = styled.section`
   position: relative;
-  width: 100%;
-  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 3rem;
+  padding: 2rem 0;
+  overflow: hidden;
+  /* Edges dissolve into the page so the strip reads as part of the background */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
 
-  div {
-    width: 100%;
-    .scroll-wrapper {
-      display: flex;
-      align-items: center;
-      width: 200%;
-      gap: 1rem;
-      overflow: hidden;
-      padding: 1.5rem 1.5rem 1.5rem 1.5rem;
-      background-color: ${props => props.theme['skils-100']};
-      box-shadow: 0px 0px 4px 0px ;
-    }
-    
-    .infinite {
-      display: flex;
-      justify-content: space-between;
-      animation: ${infiniteScroll} 30s linear infinite;
-    }
+  /* Thin HUD rails above and below */
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(76, 194, 233, 0.35), transparent);
+  }
 
-    .scroll {
-      display: flex;
-      justify-content: space-between;
-      animation: ${infiniteScroll} 30s linear infinite;
-    }
+  &::before {
+    top: 0;
+  }
 
-    .html {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['html']};
-      transition:  color 0.3s ease;
-      cursor: pointer;
-    }
+  &::after {
+    bottom: 0;
+  }
 
-    .html:hover {
-      color: #FA7B4B;
-    }
-    .css {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['css']};
-      cursor: pointer;
-      transition:  color 0.3s ease;
-    }
+  .row {
+    display: flex;
+  }
 
-    .css:hover {
-      color: #4A82F7;
-    }
-    .js {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['js']};
-      cursor: pointer;
-      transition:  color 0.3s ease;
-    }
+  .track {
+    display: flex;
+    flex-shrink: 0;
+    gap: 3rem;
+    padding-right: 3rem;
+    list-style: none;
+    animation: ${marquee} 45s linear infinite;
+  }
 
-    .js:hover {
-      color: #F7E26B;
-    }
+  .row.reverse .track {
+    animation-direction: reverse;
+    animation-duration: 55s;
+  }
 
-    .ts {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['ts']};
-      cursor: pointer;
-      transition:  color 0.3s ease;
+  &:hover .track {
+    animation-play-state: paused;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    white-space: nowrap;
+    color: rgba(225, 225, 230, 0.45);
+    transition: color 0.3s ease;
+
+    .icon {
+      width: 1.6rem;
+      height: 1.6rem;
+      transition: color 0.3s ease, filter 0.3s ease;
     }
 
-    .ts:hover {
-      color: #5591D1;
-    }
-
-    .react {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['react']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .react:hover {
-      color: #A0E3FF;
-    }
-    .vite {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['vite']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .vite:hover {
-      color: #969EFF;
-    }
-    .next {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['next']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .next:hover {
-      color: #333333;
-    }
-    .git {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['git']};
-      cursor: pointer;
-      transition: color 0.3s ease; 
-    }
-
-    .git:hover {
-      color: #F47B69;
-    }
-    .github {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['github']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .github:hover {
-      color: #555555;
-    }
-    .figma {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['figma']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .figma:hover {
-      color: #F48A69;
-    }
-    .tailwind {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['tailwind']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .tailwind:hover {
-      color: #53DFF5;
-    }
-
-    .node {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['node']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .node:hover {
-      color: #2a7a29;
-    }
-
-    .vitest {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['vitest']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .vitest:hover {
-      color: #597f13;
-    }
-
-    .postgres {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['postgres']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .postgres:hover { 
-      color: #285275; 
-    }
-
-    .sql {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['sql']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .sql:hover { 
-      color: #36607f;
-    }
-
-    .knex {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['knex']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .knex:hover { 
-      color: #b93d1f;
-    }
-
-    .fastify {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['fastify']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .fastify:hover { 
-      color: #333333;
-    }
-
-    .docker {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['docker']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .docker:hover { 
-      color: #154dc2;
-    }
-
-    .prisma {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['prisma']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .prisma:hover { 
-      color: #6548cc;
-    }
-
-    .styled {
-      height: 2rem;
-      width: 2rem;
-      color: ${props => props.theme['styled']};
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .styled:hover {
-      color: #E6A9B9;
+    span {
+      font-family: "Michroma", sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
     }
   }
 
+  li:hover {
+    color: #fff;
 
-  @media (max-width: 767px) {
-    margin-top: 11rem;
-
-    .infinite {
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .scroll {
-      justify-content: center;
-      gap: 1rem;
+    .icon {
+      color: var(--brand);
+      filter: drop-shadow(0 0 8px var(--brand));
     }
   }
 `

@@ -1,67 +1,74 @@
+import type { CSSProperties } from "react";
+
 import { ContactContainer } from "./styles";
 
-import { FaLinkedin } from "react-icons/fa";
-import { FaWhatsapp } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { GoArrowUpRight } from "react-icons/go";
+
+import { SectionTitle } from "../SectionTitle";
 
 interface ContactProps {
   id: string
 }
 
-export function Contact({id}:ContactProps) {
+const channels = [
+  {
+    name: "LinkedIn",
+    handle: "alison-betini",
+    href: "https://www.linkedin.com/in/alison-betini-334807199/",
+    icon: FaLinkedin,
+    color: "#0A66C2",
+  },
+  {
+    name: "WhatsApp",
+    handle: "+55 19 98976-0135",
+    href: "https://wa.me/5519989760135?text=Ol%C3%A1%2C%20vi%20seu%20portf%C3%B3lio%20e%20quero%20conversar!",
+    icon: FaWhatsapp,
+    color: "#25D366",
+  },
+  {
+    name: "GitHub",
+    handle: "AlisonBetini",
+    href: "https://github.com/AlisonBetini",
+    icon: FaGithub,
+    color: "#FFFFFF",
+  },
+]
+
+export function Contact({ id }: ContactProps) {
   return (
     <ContactContainer>
-      <div className="flex justify-center items-center mb-3">
-      <iframe 
-        width="560" 
-        height="315" 
-        src="https://www.youtube.com/embed/IsidFKw66V8?si=MUoXV92VougQH661" 
-        title="Apresentação Dev" 
-        frameBorder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;  picture-in-picture; web-share">
-      </iframe>
+      <div className="video">
+        <span className="label">Apresentação</span>
+        <iframe
+          src="https://www.youtube.com/embed/IsidFKw66V8?si=MUoXV92VougQH661"
+          title="Apresentação Dev"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        />
       </div>
 
-      <div id={id} className="skills">
-        <div className="borderOne"></div>
-        <h2>Contato</h2>
-        <div className="borderTwo"></div> 
-      </div>
-      <div className="mid">
-        <div className="card-mid">
-          <FaLinkedin className="linkedin" size={26} />
-          <span>Linkedin</span>
-          <a href="https://www.linkedin.com/in/alison-betini-334807199/" target="_blank">
-            <strong>
-              <span>Acessar</span> <GoArrowUpRight />
-            </strong>
-          </a>
-        </div>
-      </div>
+      <SectionTitle id={id} index="05" kicker="Conecte-se" title="Contato" />
+
       <div className="contact">
-        <div className="card">
-          <FaWhatsapp className="whatsapp" size={26} />
-          <span>WhatsApp</span>
-          <a 
-            href="https://wa.me/5519989760135?text=Ol%C3%A1%2C%20vi%20seu%20portf%C3%B3lio%20e%20quero%20conversar!"
+        {channels.map(({ name, handle, href, icon: Icon, color }, index) => (
+          <a
+            key={name}
+            className="card"
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
+            style={{ "--brand": color } as CSSProperties}
           >
-            <strong>
-              <span>Acessar</span> <GoArrowUpRight />
-            </strong>
+            <span className="index">{String(index + 1).padStart(2, "0")}</span>
+            <Icon className="icon" size={28} />
+            <strong>{name}</strong>
+            <span className="handle">{handle}</span>
+            <span className="cta">
+              Acessar <GoArrowUpRight />
+            </span>
           </a>
-        </div>
-        <div className="card">
-          <FaGithub className="git" size={26} />
-          <span>GitHub</span>
-          <a href="https://github.com/AlisonBetini" target="_blank">
-            <strong>
-              <span>Acessar</span> <GoArrowUpRight />
-            </strong>
-          </a>
-        </div>
+        ))}
       </div>
     </ContactContainer>
   )

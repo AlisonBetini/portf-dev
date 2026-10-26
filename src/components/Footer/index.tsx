@@ -1,25 +1,25 @@
 import rocketseat from "@/assets/rocketseat.jpeg"
 import fmu from "@/assets/fmu.png"
-import { ContainerFooter, IconsAnimationsRocketseat, IconsAnimationsUniFECAF } from "./styles"
+import { ContainerFooter } from "./styles"
+
+const institutions = [
+  { name: "Rocketseat", href: "https://www.rocketseat.com.br/", logo: rocketseat },
+  { name: "FMU", href: "https://portal.fmu.br/", logo: fmu },
+]
 
 export function Footer() {
   return (
     <ContainerFooter>
-      <h2 className="w-full flex items-center justify-center mb-3">Instituiçõs de ensino</h2>
-      <div className="w-full flex justify-center items-center gap-3">
-        <IconsAnimationsRocketseat>
-          <a href="https://www.rocketseat.com.br/" target="_blank">
-            <img className="max-w-12 max-sm:w-10 rounded-xl cursor-pointer" src={rocketseat} alt="rocketseat" />
-          </a> 
-          <span className="text-violet-400">Rocketseat</span>
-        </IconsAnimationsRocketseat>
-        <IconsAnimationsUniFECAF>
-          <a href="https://portal.fmu.br/" target="_blank">
-            <img className="max-w-12 max-sm:w-10 rounded-xl cursor-pointer" src={fmu} alt="uniFECAF" />
+      <span className="kicker">Instituições de ensino</span>
+      <div className="institutions">
+        {institutions.map(({ name, href, logo }) => (
+          <a key={name} className="card" href={href} target="_blank" rel="noreferrer">
+            <img src={logo} alt={name} />
+            <span>{name}</span>
           </a>
-          <span className="text-blue-400">FMU</span>
-        </IconsAnimationsUniFECAF>
+        ))}
       </div>
+      <p className="copy">© {new Date().getFullYear()} Alison Maciel · Built for the future</p>
     </ContainerFooter>
   )
 }

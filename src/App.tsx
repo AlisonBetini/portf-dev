@@ -1,5 +1,11 @@
 import { Home } from "./pages/home";
+import { Preloader } from "./components/Preloader";
 
 export function App() {
-  return <Home />
+  return (
+    <>
+      <Preloader />
+      <Home />
+    </>
+  )
 }

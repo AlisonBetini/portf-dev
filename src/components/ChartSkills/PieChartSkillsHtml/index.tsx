@@ -64,7 +64,7 @@ export function PieChartSkillsHtml() {
                               y={viewBox.cy}
                               className="fill-muted text-[22px] font-bold"
                             >
-                              Nest
+                              HTML
                             </tspan>
                             <tspan
                               x={viewBox.cx}

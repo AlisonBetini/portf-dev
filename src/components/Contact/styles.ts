@@ -1,200 +1,98 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
-const AnimationBorder = keyframes`
-  0% {
-    background-color: blue;
-    transform: translateX(-100%);
-  }
+import { displayFont, glassPanel } from "@/styles/futuristic";
 
-  25% {
-    background-color: red;
-    transform: transfortranslateX(-100%)
-  }
+export const ContactContainer = styled.section`
+  margin-top: 6rem;
+  padding: 0 1rem;
 
-  50% {
-    background-color: pink;
-    transform: transfortranslateX(-100%)
-  }
+  .video {
+    ${glassPanel}
+    max-width: 640px;
+    margin: 0 auto 6rem;
+    padding: 2.25rem 0.75rem 0.75rem;
 
-  75% {
-    background-color: aqua;
-    transform: transfortranslateX(-100%)
-  }
-
-  100% {
-    background-color: blueviolet;
-    transform: transfortranslateX(-100%)
-  }
-`
-
-const AnimationBorderRight = keyframes`
-  0% {
-    background-color: blue;
-    transform: translateX(100%);
-  }
-
-  25% {
-    background-color: red;
-    transform: transfortranslateX(100%)
-  }
-
-  50% {
-    background-color: pink;
-    transform: transfortranslateX(100%)
-  }
-
-  75% {
-    background-color: aqua;
-    transform: transfortranslateX(100%)
-  }
-
-  100% {
-    background-color: blueviolet;
-    transform: transfortranslateX(100%)
-  }
-`
-
-export const ContactContainer = styled.div`
-  .skills {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    h2 {
-      width: 30%;
-      font-size: 1.7rem;
-      font-weight: 500;
-      color: ${props => props.theme['gray-100']};
-      text-align: center;
+    .label {
+      ${displayFont}
+      position: absolute;
+      top: 0.8rem;
+      left: 1rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: ${props => props.theme['accent-glow']};
     }
 
-    .borderOne {
+    iframe {
+      display: block;
       width: 100%;
-      height: 1px;
-      background-color: ${props => props.theme['gray-100']};
-      box-shadow: 0px 0px 2px 0px;
-      animation: ${AnimationBorder} 1s linear;
-    }
-
-    .borderTwo {
-      width: 100%;
-      height: 1px;
-      background-color: ${props => props.theme['gray-100']};
-      box-shadow: 0px 0px 2px 0px;
-      animation: ${AnimationBorderRight} 1s linear;
-    }
-  }
-
-  .mid {
-    width: 100%;
-    height: 150px;
-
-    a {
-      text-decoration: none;
-      color: ${props => props.theme['gray-100']};
-    }
-    
-    .card-mid {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: 2rem auto;
-      gap: 0.75rem;
-      border-radius: 8px;
-      width: 200px;
-      height: 150px;
-      cursor: pointer;
-      transition: background-color 600ms ease;
-      background-color: #424873;
-
-      strong {
-        color: ${props => props.theme['gray-100']};
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-
-      .linkedin {
-        color: #0A66C2;
-      }
-    }
-    .card-mid:hover {
-      background-color: rgba(10, 102, 194, 0.08);
-      box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+      aspect-ratio: 16 / 9;
     }
   }
 
   .contact {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    margin: 2rem 0rem 4rem 0rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 5rem;
 
-    a {
+    .card {
+      ${glassPanel}
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 1.75rem 1.5rem;
       text-decoration: none;
       color: ${props => props.theme['gray-100']};
     }
-    .card {
+
+    .index {
+      ${displayFont}
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: ${props => props.theme['gray-300']};
+    }
+
+    .icon {
+      color: var(--brand);
+      margin-bottom: 0.75rem;
+      transition: filter 0.4s ease;
+    }
+
+    strong {
+      ${displayFont}
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+    }
+
+    .handle {
+      font-size: 0.8rem;
+      color: ${props => props.theme['gray-300']};
+    }
+
+    .cta {
+      ${displayFont}
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      gap: 0.75rem;
-      border-radius: 8px;
-      min-width: 200px;
-      height: 150px;
-      cursor: pointer;
-      transition: background-color 600ms ease;
-      background-color: #424873;
-      margin-right: 1rem;
-
-      strong {
-        color: ${props => props.theme['gray-100']};
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-
-      .whatsapp {
-        color: #25D366;
-      }
-
-      .git {
-        color: #181717;
-      }
+      gap: 0.4rem;
+      margin-top: 1rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: ${props => props.theme['accent-glow']};
     }
 
-    .card:nth-child(1) {
-      margin-left: 10px;
+    .card:hover .icon {
+      filter: drop-shadow(0 0 10px var(--brand));
     }
-
-    .card:nth-child(1):hover {
-      background-color: rgba(37, 211, 102, 0.08);
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    }
-
-    .card:nth-child(2) {
-      margin-left: 10px;
-    }
-
-    .card:nth-child(2):hover {
-      background-color: rgba(24, 23, 23, 0.08);
-      box-shadow: 0 4px 12px rgba(24, 23, 23, 0.3);
-    }
-    
-    .card:hover {
-      background-color: #5B378E;
-    }
-
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 700px) {
     .contact {
-      flex-direction: column;
+      grid-template-columns: 1fr;
     }
   }
 `

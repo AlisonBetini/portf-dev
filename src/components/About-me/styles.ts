@@ -1,5 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
+import { displayFont, glassPanel } from "@/styles/futuristic";
+
 const gear = keyframes`
   from {
     transform: rotate(360deg);
@@ -71,10 +73,11 @@ const cursor = keyframes`
   }  
 `
 
-export const AboutMeContainer = styled.div`
+export const AboutMeContainer = styled.section`
   display: flex;
   align-items: center;
-  margin-top: 4rem;
+  gap: 2rem;
+  margin-top: 6rem;
   padding: 0px 2rem 0px 2rem;
   margin-bottom: 4rem;
 
@@ -93,7 +96,7 @@ export const AboutMeContainer = styled.div`
     
     .line-1, .line-2, .line3 {
       animation: ${lineAnimation} 1.5s linear ;
-      border: 1px solid ${props => props.theme['orange-400']};
+      border: 1px solid ${props => props.theme['accent']};
       height: 4rem;
       width: 2px;
     }
@@ -102,23 +105,29 @@ export const AboutMeContainer = styled.div`
       height: 5px;
       width: 5px;
       border-radius: 50%;
-      background-color: ${props => props.theme['orange-400']};
+      background-color: ${props => props.theme['accent']};
     }
 
     .hard-skills {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      gap: 1rem;
     }
 
     .content {
+      ${glassPanel}
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 1.5rem;
       min-width: 20rem;
+      padding: 1.25rem 1.5rem;
 
       strong {
-       color: ${props => props.theme['gray-300']};
+        ${displayFont}
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        color: ${props => props.theme['gray-100']};
       }
 
       .separatorArrow {
@@ -131,58 +140,53 @@ export const AboutMeContainer = styled.div`
       .gear {
         animation: ${gear} 15s linear infinite;
         cursor: pointer;
-        color: #D4D4D8;
+        color: ${props => props.theme['accent-glow']};
       }
 
       .pincel {
         animation: ${pincel} 5s linear infinite;
         cursor: pointer;
-        color: #EF8AAD;
+        color: ${props => props.theme['accent-glow']};
       }
 
       .arrowLeft {
         animation: ${arrowLeft} 5s linear infinite;
         cursor: pointer;
-        color: ${props => props.theme['orange-400']};
+        color: ${props => props.theme['accent']};
       }
 
       .arrowRight {
         animation: ${arrowRight} 5s linear infinite;
         cursor: pointer;
-        color: ${props => props.theme['orange-400']};
+        color: ${props => props.theme['accent']};
     }
   }
   }
 
   .about {
-    h1 {
-      font-size: 2rem;
-      font-weight: 500;
-      margin-bottom: 1.8rem;
-      margin-top: 2rem;
-      color: ${props => props.theme['gray-100']};
-    }
-
     p {
       color: ${props => props.theme['gray-300']};
-      margin: 0rem 0px 2.5rem 0px;
-      text-align: justify;
+      margin: 0 0 1.25rem;
+      line-height: 1.7;
     }
 
     .separator-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
 
       .card {
+        ${glassPanel}
         display: flex;
         flex-direction: column;
-        min-width: 105px;
         gap: 0.70rem;
+        padding: 1.25rem;
 
         strong {
+          ${displayFont}
           position: relative;
-          font-size: 2rem;
+          font-size: 1.6rem;
           color: ${props => props.theme['gray-100']};
           width: 100%;
           white-space: nowrap;
@@ -196,10 +200,13 @@ export const AboutMeContainer = styled.div`
           content: '+';
           position: absolute;
           margin-left: 8px;
-          color: ${props => props.theme['orange-400']};
+          color: ${props => props.theme['accent']};
         }
 
         span {
+          font-size: 0.75rem;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
           color: ${props => props.theme['gray-300']};
         }
       }

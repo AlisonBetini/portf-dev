@@ -3,6 +3,7 @@ import { FiPenTool, FiSettings } from "react-icons/fi";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
+import { SectionTitle } from "../SectionTitle";
 import { AboutMeContainer } from "./styles";
 
 interface AboutMeProps {
@@ -41,7 +42,7 @@ export function AboutMe({ id }: AboutMeProps) {
         <div></div>
       </div>
       <div className="about">
-        <h1>Sobre mim</h1>
+        <SectionTitle index="01" kicker="Quem sou eu" title="Sobre mim" />
         <p>
           Desenvolvedor Full Stack especializado em ecossistema JavaScript e
           TypeScript (React, Next.js, Node.js e NestJS), focado na criação de

@@ -1,12 +1,13 @@
 export const defaultTheme = {
-  'background': '#121F28',
+  'background': '#07070D',
 
   'gray-100': '#E1E1E6',
   'gray-300': '#C4C4CC',
 
-  'orange-400': '#fb725b',
+  'accent': '#2F3BFF',
+  'accent-glow': '#4CC2E9',
 
-  'skils-100': '#17232D',
+  'skils-100': '#0E0E18',
 
   'html': '#E34F26',
   'css': '#1572B6',
