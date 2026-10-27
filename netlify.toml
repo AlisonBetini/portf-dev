@@ -1,0 +1,9 @@
+# Netlify must publish the Vite build output, not the project root
+# (serving the root index.html loads /src/main.tsx raw and the page stays blank).
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Vite 7 requires Node 20.19+ or 22.12+.
+  NODE_VERSION = "22"
