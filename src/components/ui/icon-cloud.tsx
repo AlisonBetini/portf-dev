@@ -111,9 +111,10 @@ export function IconCloud({ icons, images }: IconCloudProps) {
       const z = Math.sin(phi) * r
 
       newIcons.push({
-        x: x * 100,
-        y: y * 100,
-        z: z * 100,
+        // Sphere radius leaves room for the 40px icons, which would be cut at the 200px canvas edge.
+        x: x * 80,
+        y: y * 80,
+        z: z * 80,
         scale: 1,
         opacity: 1,
         id: i,

@@ -62,7 +62,9 @@ export function Home() {
           <AboutMe id="About" />
           <MusicOrb id="Soundtrack" />
           <TechnologicalSkills id="Skills" />
-          <Projects id="Projects" />
+        </HomeContainer>
+        <Projects id="Projects" />
+        <HomeContainer>
           <Contact id="Contact"/>
           <Footer />
         </HomeContainer>

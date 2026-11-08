@@ -1,87 +1,183 @@
-import { FaGithub } from "react-icons/fa6";
-import { FaLinkedin } from "react-icons/fa";
+import type { CSSProperties } from "react";
+import { FaGithub, FaLinkedin, FaLock } from "react-icons/fa";
+import { GoArrowUpRight } from "react-icons/go";
+import { MdVerified } from "react-icons/md";
+import { TbWebhook } from "react-icons/tb";
 
-import { ProjectsContainer } from "./styles";
-
-import typeWeather from "../../assets/typeweather.png";
-import foodExplorer from "../../assets/foodExplorer.png";
-import vendaSeusProdutos from "../../assets/Venda seus produtos.png";
-import redesSociais from "../../assets/redesSociais.png";
-import cbpa from "../../assets/cbpa.png";
-import ElectricBorder from "../ElectricBorder";
 import { SectionTitle } from "../SectionTitle";
+import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 
-interface ProjectsProps {
-  id: string;
+import { deployed, inProgress, projects, studies, type Project, type StudyProject } from "./data";
+import { ProjectGroup, ProjectsContainer } from "./styles";
+
+type Status = "live" | "building" | "none"
+
+const statusLabels: Record<Status, string> = {
+  live: "Implantado",
+  building: "Em implantação",
+  none: "",
 }
 
-const projects = [
-  {
-    name: "Canil Terras do Barão",
-    image: cbpa,
-    github: "https://github.com/AlisonBetini/Canil-Terras-do-Bar-o",
-    linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7490005737885302784/",
-  },
-  {
-    name: "FoodExplorer",
-    image: foodExplorer,
-    github: "https://github.com/AlisonMaciel/foodExplorer",
-    linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7348426071400194049/",
-  },
-  {
-    name: "TypeWeather",
-    image: typeWeather,
-    github: "https://github.com/AlisonMaciel/TYPEWEATHER",
-    linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7386516700218761217/?originTrackingId=HLdrvWYUDrN%2FLiVm%2BvM3aQ%3D%3D",
-  },
-  {
-    name: "Projeto em Next",
-    image: vendaSeusProdutos,
-    github: "https://github.com/AlisonMaciel/SITE-BLOG",
-    linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7386784158490189824/?originTrackingId=gRIB7Yb6CpgzHVyYzcPTYA%3D%3D",
-  },
-  {
-    name: "Redes Sociais",
-    image: redesSociais,
-    github: "https://github.com/AlisonMaciel/fundamentos-reactjs",
-    linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7355699914862960642/",
-  },
-];
+interface ProjectCardProps {
+  project: Project
+  number: number
+  status: Status
+}
 
-// Alternate the electric border between the two neon tones of the theme.
-const borderColors = ["#4CC2E9", "#2F3BFF"];
+function ProjectCard({ project, number, status }: ProjectCardProps) {
+  const { ref, revealed } = useRevealOnScroll<HTMLElement>()
+  const { name, description, tags, result, image, url, repo, business, accessNote } = project
+
+  return (
+    <article
+      ref={ref}
+      className={`project-card ${revealed ? "revealed" : "pending"}`}
+      // Cards in the same row start one after the other.
+      style={{ "--delay": `${(number % 3) * 0.14}s` } as CSSProperties}
+    >
+      <div className="frame" aria-hidden="true">
+        <span className="arc" />
+        <span className="orbit" />
+      </div>
+
+      <div className="media">
+        {image ? (
+          <img src={image} alt={`Tela do projeto ${name}`} loading="lazy" />
+        ) : (
+          <div className="placeholder" aria-hidden="true">
+            <TbWebhook />
+          </div>
+        )}
+        <span className="burst" aria-hidden="true" />
+      </div>
+
+      <div className="content">
+        {status !== "none" && <span className={`status ${status}`}>{statusLabels[status]}</span>}
+
+        <div className="heading">
+          <span className="crest" aria-hidden="true">{String(number).padStart(2, "0")}</span>
+          <h4>{name}</h4>
+        </div>
+
+        <p>{description}</p>
+
+        <ul className="tags">
+          {tags.map(tag => <li key={tag}>{tag}</li>)}
+        </ul>
+
+        <div className="result">
+          <span>Destaque</span>
+          <strong>{result}</strong>
+        </div>
+
+        {business && (
+          <div className="business">
+            {business.thumb && (
+              <img
+                className={business.thumbContain ? "contain" : undefined}
+                src={business.thumb}
+                alt={business.thumbAlt}
+                loading="lazy"
+              />
+            )}
+            <div className="business-info">
+              <span className="business-label"><MdVerified /> {business.label ?? "Empresa real"}</span>
+              <strong>{business.name}</strong>
+              <span className="business-detail">{business.detail}</span>
+              {business.href && (
+                <a href={business.href} target="_blank" rel="noreferrer">
+                  {business.linkLabel} <GoArrowUpRight />
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+
+        <div className="actions">
+          {url && (
+            <a className="accept" href={url} target="_blank" rel="noreferrer">
+              <span>Ver projeto <GoArrowUpRight /></span>
+            </a>
+          )}
+          {!url && status !== "none" && (
+            <span className="accept off">
+              <span>{accessNote ? <><FaLock /> {accessNote}</> : "Em breve"}</span>
+            </span>
+          )}
+          {repo ? (
+            <a className="decline" href={repo} target="_blank" rel="noreferrer">
+              <FaGithub /> Código
+            </a>
+          ) : (
+            <span className="decline off"><FaLock /> Código privado</span>
+          )}
+        </div>
+      </div>
+    </article>
+  )
+}
+
+function StudyCard({ name, image, repo, linkedin }: StudyProject) {
+  return (
+    <article className="study-card">
+      <img src={image} alt={`Tela do projeto ${name}`} loading="lazy" />
+      <div>
+        <strong>{name}</strong>
+        <span className="links">
+          <a href={repo} target="_blank" rel="noreferrer" aria-label={`Código de ${name} no GitHub`}><FaGithub /></a>
+          <a href={linkedin} target="_blank" rel="noreferrer" aria-label={`${name} no LinkedIn`}><FaLinkedin /></a>
+        </span>
+      </div>
+    </article>
+  )
+}
+
+interface ProjectsProps {
+  id: string
+}
 
 export function Projects({ id }: ProjectsProps) {
+  // Numbering continues across groups.
+  const inProgressStart = deployed.length + 1
+  const projectsStart = inProgressStart + inProgress.length
+
   return (
     <ProjectsContainer id={id}>
       <SectionTitle index="04" kicker="Portfólio" title="Projetos" />
-      <div className="project">
-        {projects.map((project, index) => (
-          <ElectricBorder
-            key={project.name}
-            color={borderColors[index % borderColors.length]}
-            speed={1}
-            chaos={0.12}
-            style={{ borderRadius: 4 }}
-          >
-            <div className="card">
-              <img src={project.image} alt={project.name} />
-              <div className="info">
-                <span className="index">{String(index + 1).padStart(2, "0")}</span>
-                <strong>{project.name}</strong>
-                <div className="links">
-                  <a href={project.github} target="_blank" rel="noreferrer" aria-label={`${project.name} no GitHub`}>
-                    <FaGithub size={18} />
-                  </a>
-                  <a href={project.linkedin} target="_blank" rel="noreferrer" aria-label={`${project.name} no LinkedIn`}>
-                    <FaLinkedin size={18} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </ElectricBorder>
-        ))}
-      </div>
+
+      <ProjectGroup>
+        <h3>Implantados</h3>
+        <div className="cards two">
+          {deployed.map((project, index) => (
+            <ProjectCard key={project.name} project={project} number={index + 1} status="live" />
+          ))}
+        </div>
+      </ProjectGroup>
+
+      <ProjectGroup>
+        <h3>Em implantação</h3>
+        <div className="cards three">
+          {inProgress.map((project, index) => (
+            <ProjectCard key={project.name} project={project} number={inProgressStart + index} status="building" />
+          ))}
+        </div>
+      </ProjectGroup>
+
+      <ProjectGroup>
+        <h3>Projetos</h3>
+        <div className="cards two">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.name} project={project} number={projectsStart + index} status="none" />
+          ))}
+        </div>
+      </ProjectGroup>
+
+      <ProjectGroup>
+        <h3>Estudos</h3>
+        <div className="cards four">
+          {studies.map(study => <StudyCard key={study.name} {...study} />)}
+        </div>
+      </ProjectGroup>
     </ProjectsContainer>
-  );
+  )
 }

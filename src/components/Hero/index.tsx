@@ -1,7 +1,7 @@
 import { HeroContainer, Button } from "./styles";
 import { socials } from "@/config/socials";
 
-import dev from "../../assets/Retrato futurista com headset VR luminoso.png"
+import dev from "../../assets/hero-portrait.webp"
 
 interface HeroProps {
   id: string

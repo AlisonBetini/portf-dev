@@ -6,6 +6,7 @@ export const defaultTheme = {
 
   'accent': '#2F3BFF',
   'accent-glow': '#4CC2E9',
+  'hextech-gold': '#C8AA6E',
 
   'skils-100': '#0E0E18',
 

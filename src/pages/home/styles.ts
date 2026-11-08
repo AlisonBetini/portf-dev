@@ -6,7 +6,7 @@ export const HeroSection = styled.div`
   /* Transparent bottom edge so the hero melts into the lightfall below instead of ending in a seam */
   background: linear-gradient(to bottom, ${props => props.theme['background']} 75%, transparent);
 
-  /* Mask fades the road into the rest of the page without isolating the hero (photo uses blend mode). */
+  /* Mask fades the road into the rest of the page. */
   .hyperspeed-bg {
     position: absolute;
     inset: 0;

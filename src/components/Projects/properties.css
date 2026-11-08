@@ -1,0 +1,12 @@
+/* Registered so the conic-gradient arcs on the project cards can be animated. */
+@property --arc-sweep {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --arc-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}

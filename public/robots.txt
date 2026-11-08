@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alison-dev.netlify.app/sitemap.xml

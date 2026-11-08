@@ -164,10 +164,61 @@ export const AboutMeContainer = styled.section`
   }
 
   .about {
+    min-width: 0;
+
     p {
       color: ${props => props.theme['gray-300']};
       margin: 0 0 1.25rem;
       line-height: 1.7;
+    }
+
+    .solves-title {
+      ${displayFont}
+      margin: 1.75rem 0 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: ${props => props.theme['accent-glow']};
+    }
+
+    .solves {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+      list-style: none;
+
+      li {
+        ${glassPanel}
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        padding: 1rem;
+      }
+
+      strong {
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1.35;
+        color: #fff;
+      }
+
+      p {
+        flex: 1;
+        margin: 0;
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+
+      span {
+        ${displayFont}
+        font-size: 0.5rem;
+        letter-spacing: 0.15em;
+        color: ${props => props.theme['hextech-gold']};
+      }
+
+      @media (max-width: 560px) {
+        grid-template-columns: 1fr;
+      }
     }
 
     .separator-card {
@@ -213,36 +264,61 @@ export const AboutMeContainer = styled.section`
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 900px) {
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
 
     .about {
+      width: 100%;
       margin-bottom: 5rem;
+    }
+  }
+
+  /* Three number cards do not fit side by side: stack them, number on the left */
+  @media (max-width: 520px) {
+    padding: 0 1rem;
+
+    .about .separator-card {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+
+      .card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.9rem 1.1rem;
+
+        strong {
+          width: auto;
+          padding-right: 1.4rem;
+        }
+      }
     }
   }
 
   @media (max-width: 425px) {
     .skills {
       justify-content: center;
-      gap: 3rem;
-      padding-left: 4rem;
+      gap: 1rem;
+      width: 100%;
       margin-bottom: 2rem;
 
       .separator {
         margin-right: 0rem;
       }
-    }
-  }
 
-  @media (max-width: 375px) {
-    .skills {
-      justify-content: center;
-      gap: 1.7rem;
-      padding-left: 4rem;
-      margin-bottom: 2rem;
+      .hard-skills {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .content {
+        min-width: 0;
+        gap: 1rem;
+        padding: 1rem;
+      }
     }
   }
 `

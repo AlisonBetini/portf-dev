@@ -125,13 +125,18 @@ export const HeroContainer = styled.section`
     pointer-events: none;
   }
 
-  /* The photo has a black backdrop: lighten blends it into the hyperspeed background. */
+  /* Transparent cutout, so the hoodie stays solid over the hyperspeed; only the base fades out. */
   .dev {
     display: block;
     width: 100%;
-    mix-blend-mode: lighten;
-    -webkit-mask-image: radial-gradient(ellipse 70% 75% at 50% 40%, #000 55%, transparent 100%);
-    mask-image: radial-gradient(ellipse 70% 75% at 50% 40%, #000 55%, transparent 100%);
+    -webkit-mask-image:
+      linear-gradient(to bottom, #000 88%, transparent),
+      linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to bottom, #000 88%, transparent),
+      linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    mask-composite: intersect;
     animation: ${glow} 4s ease-in-out infinite;
   }
 
@@ -248,6 +253,11 @@ export const HeroContainer = styled.section`
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
+
+    .tag {
+      display: none;
+    }
+
     padding: 2rem 3.5rem 0 1.5rem;
 
     .hero {
@@ -275,10 +285,6 @@ export const HeroContainer = styled.section`
     .panels {
       grid-template-columns: 1fr;
       gap: 1rem;
-    }
-
-    .tag {
-      display: none;
     }
   }
 `

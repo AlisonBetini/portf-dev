@@ -8,6 +8,30 @@ import { useGithubRepoCount } from "@/hooks/useGithubRepoCount";
 import { CERTIFICATES, GITHUB_REPOS_FALLBACK, GITHUB_USER, LINKEDIN_FOLLOWERS } from "@/config/profile";
 import { AboutMeContainer } from "./styles";
 
+// Each item comes from a real client project (see components/Projects/data.ts).
+const solutions = [
+  {
+    title: "Agenda sem troca de mensagens",
+    description: "O cliente escolhe o serviço, o profissional e o horário sozinho, a qualquer hora.",
+    client: "Barbearia Lopes",
+  },
+  {
+    title: "Pedidos organizados no WhatsApp",
+    description: "Cardápio digital com busca e carrinho: o pedido chega pronto para o atendimento.",
+    client: "Panda Beer",
+  },
+  {
+    title: "Venda on-line com gestão própria",
+    description: "Loja virtual com produtos, promoções e pedidos controlados em um painel.",
+    client: "Pink Muller",
+  },
+  {
+    title: "Orçamento rápido e profissional",
+    description: "Clique nas peças do carro em 3D, monte os serviços e emita o orçamento em PDF.",
+    client: "Funilaria HCM",
+  },
+]
+
 interface AboutMeProps {
   id: string;
 }
@@ -48,27 +72,27 @@ export function AboutMe({ id }: AboutMeProps) {
       <div className="about">
         <SectionTitle index="01" kicker="Quem sou eu" title="Sobre mim" />
         <p>
-          Desenvolvedor Full Stack especializado em ecossistema JavaScript e
-          TypeScript (React, Next.js, Node.js e NestJS), focado na criação de
-          aplicações web modernas, escaláveis e de alta performance. Tenho
-          experiência prática no desenvolvimento de produtos ponta a ponta:
-          desde a construção de interfaces responsivas e otimizadas para SEO
-          (com pontuação máxima em métricas de performance), até a estruturação
-          de APIs REST escaláveis, modelagem de bancos de dados relacionais e
-          uso de Docker.
+          Sou desenvolvedor Full Stack e trabalho direto com donos de negócio:
+          entendo o que está travando o dia a dia e transformo isso em um
+          sistema simples de usar.
         </p>
-        <p>💻 Principais Tecnologias & Ferramentas</p>
+
+        <h3 className="solves-title">O que eu resolvo</h3>
+        <ul className="solves">
+          {solutions.map(({ title, description, client }) => (
+            <li key={client}>
+              <strong>{title}</strong>
+              <p>{description}</p>
+              <span>{client}</span>
+            </li>
+          ))}
+        </ul>
+
         <p>
-          Front-end: React.js, Next.js, TypeScript, JavaScript (ES6+), Tailwind
-          CSS, HTML5/CSS3.
-        </p>
-        <p>Back-end: Node.js, NestJS, Express, APIs RESTful, Prisma ORM</p>
-        <p>Banco de Dados & DevOps: PostgreSQL, Docker, Git/GitHub.</p>
-        <p>
-          Integrações com APIs (WhatsApp, serviços web) e automações. 🚀
-          Atualmente aprofundando estudos em arquitetura de software e
-          integrações com Inteligência Artificial para criação de soluções
-          inteligentes.
+          Cuido do projeto inteiro, da interface à API, ao banco de dados e à
+          publicação, com React, Next.js, Node.js, NestJS e PostgreSQL. Hoje
+          também me aprofundo em arquitetura de software e integrações com
+          Inteligência Artificial.
         </p>
         <div className="separator-card">
           <div className="card">
