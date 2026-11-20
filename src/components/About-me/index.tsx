@@ -4,8 +4,7 @@ import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
 import { SectionTitle } from "../SectionTitle";
-import { useGithubRepoCount } from "@/hooks/useGithubRepoCount";
-import { CERTIFICATES, GITHUB_REPOS_FALLBACK, GITHUB_USER, LINKEDIN_FOLLOWERS } from "@/config/profile";
+import { CERTIFICATES, LINKEDIN_FOLLOWERS, PROJECTS } from "@/config/profile";
 import { AboutMeContainer } from "./styles";
 
 // Each item comes from a real client project (see components/Projects/data.ts).
@@ -37,8 +36,6 @@ interface AboutMeProps {
 }
 
 export function AboutMe({ id }: AboutMeProps) {
-  const repoCount = useGithubRepoCount(GITHUB_USER, GITHUB_REPOS_FALLBACK);
-
   return (
     <AboutMeContainer id={id}>
       <div className="skills">
@@ -100,7 +97,7 @@ export function AboutMe({ id }: AboutMeProps) {
             <span>Seguidores</span>
           </div>
           <div className="card">
-            <strong>{repoCount}</strong>
+            <strong>{PROJECTS}</strong>
             <span>Projetos</span>
           </div>
           <div className="card">

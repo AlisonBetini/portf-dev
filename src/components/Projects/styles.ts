@@ -300,6 +300,18 @@ export const ProjectGroup = styled.div`
     animation: ${buildingPulse} 1.2s ease-in-out infinite;
   }
 
+  .status.next {
+    color: ${props => props.theme['accent-glow']};
+    border-color: ${props => props.theme['accent-glow']};
+    box-shadow: 0 0 12px rgba(76, 194, 233, 0.35);
+  }
+
+  .status.next::before {
+    background: ${props => props.theme['accent-glow']};
+    box-shadow: 0 0 8px ${props => props.theme['accent-glow']};
+    animation: ${buildingPulse} 0.9s ease-in-out infinite;
+  }
+
   .content {
     display: flex;
     flex: 1;

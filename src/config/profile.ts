@@ -1,13 +1,10 @@
-// Profile numbers shown in the "Sobre mim" cards.
+// Profile numbers shown in the "Sobre mim" cards. Update by hand.
+// Last updated: 2026-11-20
 
-// Public repository count is fetched live from this GitHub account.
-export const GITHUB_USER = "AlisonBetini"
+// LinkedIn has no public API for a personal profile's follower count.
+export const LINKEDIN_FOLLOWERS = 1221
 
-// Used until the first GitHub response arrives (or if the API is unavailable).
-export const GITHUB_REPOS_FALLBACK = 30
-
-// LinkedIn has no public API for a personal profile's follower count: update by hand.
-// Last updated: 2026-10-26
-export const LINKEDIN_FOLLOWERS = 1041
+// Includes private repositories, which the public GitHub API does not count.
+export const PROJECTS = 41
 
 export const CERTIFICATES = 15

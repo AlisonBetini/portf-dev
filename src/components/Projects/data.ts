@@ -28,6 +28,8 @@ export interface Business {
 
 export interface Project {
   name: string
+  // Marks the project scheduled to launch next.
+  upNext?: boolean
   business?: Business
   // Shown instead of the link when the system is not public.
   accessNote?: string
@@ -74,22 +76,40 @@ export const deployed: Project[] = [
       detail: "Limeira/SP · implantado para uso do dono",
     },
   },
-]
-
-export const inProgress: Project[] = [
   {
     name: "Barbearia Lopes",
     description: "Agendamento on-line por serviço, barbeiro e horário, com loja, cardápio e plano VIP.",
     tags: ["React", "Express", "Prisma", "PostgreSQL", "Docker"],
     result: "Pix via Asaas e Google Agenda",
     image: barbearia,
+    url: "https://www.lopesbarbearia.com.br",
     business: {
       name: "Barbearia Lopes",
-      detail: "Foto real do espaço · +3,5 mil seguidores",
+      detail: "No ar e em uso pela barbearia · +3,5 mil seguidores",
       thumb: barbeariaEspaco,
       thumbAlt: "Salão da Barbearia Lopes, com cadeiras e a placa da marca na parede",
       href: "https://www.instagram.com/barbearialopesss_/",
       linkLabel: "@barbearialopesss_",
+    },
+  },
+]
+
+export const inProgress: Project[] = [
+  {
+    name: "Pink Muller",
+    upNext: true,
+    description: "Loja virtual de perfumes, maquiagem e acessórios, com promoções, combos e lançamentos.",
+    tags: ["Next.js", "Three.js", "Zustand", "Tailwind"],
+    result: "Vitrine em 3D e painel administrativo",
+    image: perfumaria,
+    business: {
+      name: "Pink Muller",
+      detail: "Limeira/SP · +6,6 mil seguidores no Instagram",
+      thumb: pinkMullerLogo,
+      thumbContain: true,
+      thumbAlt: "Logo da Pink Muller",
+      href: "https://www.instagram.com/pink_muller_makeup/",
+      linkLabel: "@pink_muller_makeup",
     },
   },
   {
@@ -105,22 +125,6 @@ export const inProgress: Project[] = [
       thumbAlt: "Logo da Panda Beer",
       href: "https://www.instagram.com/pandabeer.oficial/",
       linkLabel: "@pandabeer.oficial",
-    },
-  },
-  {
-    name: "Pink Muller",
-    description: "Loja virtual de perfumes, maquiagem e acessórios, com promoções, combos e lançamentos.",
-    tags: ["Next.js", "Three.js", "Zustand", "Tailwind"],
-    result: "Vitrine em 3D e painel administrativo",
-    image: perfumaria,
-    business: {
-      name: "Pink Muller",
-      detail: "Limeira/SP · +6,6 mil seguidores no Instagram",
-      thumb: pinkMullerLogo,
-      thumbContain: true,
-      thumbAlt: "Logo da Pink Muller",
-      href: "https://www.instagram.com/pink_muller_makeup/",
-      linkLabel: "@pink_muller_makeup",
     },
   },
 ]

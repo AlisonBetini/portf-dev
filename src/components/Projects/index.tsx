@@ -10,11 +10,12 @@ import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import { deployed, inProgress, projects, studies, type Project, type StudyProject } from "./data";
 import { ProjectGroup, ProjectsContainer } from "./styles";
 
-type Status = "live" | "building" | "none"
+type Status = "live" | "building" | "next" | "none"
 
 const statusLabels: Record<Status, string> = {
   live: "Implantado",
   building: "Em implantação",
+  next: "Próxima implantação",
   none: "",
 }
 
@@ -26,7 +27,8 @@ interface ProjectCardProps {
 
 function ProjectCard({ project, number, status }: ProjectCardProps) {
   const { ref, revealed } = useRevealOnScroll<HTMLElement>()
-  const { name, description, tags, result, image, url, repo, business, accessNote } = project
+  const { name, description, tags, result, image, url, repo, business, accessNote, upNext } = project
+  const badge: Status = status === "building" && upNext ? "next" : status
 
   return (
     <article
@@ -52,7 +54,7 @@ function ProjectCard({ project, number, status }: ProjectCardProps) {
       </div>
 
       <div className="content">
-        {status !== "none" && <span className={`status ${status}`}>{statusLabels[status]}</span>}
+        {badge !== "none" && <span className={`status ${badge}`}>{statusLabels[badge]}</span>}
 
         <div className="heading">
           <span className="crest" aria-hidden="true">{String(number).padStart(2, "0")}</span>
@@ -101,7 +103,7 @@ function ProjectCard({ project, number, status }: ProjectCardProps) {
           )}
           {!url && status !== "none" && (
             <span className="accept off">
-              <span>{accessNote ? <><FaLock /> {accessNote}</> : "Em breve"}</span>
+              <span>{accessNote ? <><FaLock /> {accessNote}</> : upNext ? "Lançamento em breve" : "Em breve"}</span>
             </span>
           )}
           {repo ? (
@@ -147,7 +149,7 @@ export function Projects({ id }: ProjectsProps) {
 
       <ProjectGroup>
         <h3>Implantados</h3>
-        <div className="cards two">
+        <div className={`cards ${deployed.length === 3 ? "three" : "two"}`}>
           {deployed.map((project, index) => (
             <ProjectCard key={project.name} project={project} number={index + 1} status="live" />
           ))}
@@ -156,7 +158,7 @@ export function Projects({ id }: ProjectsProps) {
 
       <ProjectGroup>
         <h3>Em implantação</h3>
-        <div className="cards three">
+        <div className={`cards ${inProgress.length === 3 ? "three" : "two"}`}>
           {inProgress.map((project, index) => (
             <ProjectCard key={project.name} project={project} number={inProgressStart + index} status="building" />
           ))}
